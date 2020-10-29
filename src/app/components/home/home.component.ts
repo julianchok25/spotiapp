@@ -8,8 +8,14 @@ import {SpotifyService} from '../../services/spotify.service';
 })
 export class HomeComponent {
 
+  newSongs: any[] = [];
+
   constructor( private spotify: SpotifyService) {
     // Apenas se inicialice este componente, se llama el método de getNewReleases
-    this.spotify.getNewReleases();
+    this.spotify.getNewReleases()
+      .subscribe((data: any) => {
+        console.log(data.albums.items);
+        this.newSongs = data.albums.items;
+      });
   }
 }

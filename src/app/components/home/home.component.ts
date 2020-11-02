@@ -14,8 +14,8 @@ export class HomeComponent {
     // Apenas se inicialice este componente, se llama el método de getNewReleases
     this.spotify.getNewReleases()
       .subscribe((data: any) => {
-        console.log(data.albums.items);
-        this.newSongs = data.albums.items;
+        console.log(data);
+        this.newSongs = data;
       });
   }
 }

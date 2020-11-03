@@ -19,7 +19,7 @@ export class SearchComponent {
     }
     this.loading = true;
     // console.log(termino);
-    this.spotify.getArtist(termino)
+    this.spotify.getArtists(termino)
       .subscribe((data: any) => {
         // console.log(data); Validar cuando la busqueda está vacía
         this.artists = data;

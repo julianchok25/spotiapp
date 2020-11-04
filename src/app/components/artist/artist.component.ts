@@ -11,12 +11,14 @@ export class ArtistComponent {
 
   artist: any = {};
   loading: boolean;
+  topTracks: any[] = [];
 
   constructor(private router: ActivatedRoute,
               private spotify: SpotifyService) {
     // Getting the id from url
     this.router.params.subscribe( params => {
       this.getArtist(params.id);
+      this.getTopTracks(params.id);
     });
   }
   getArtist( id: string) {
@@ -28,4 +30,11 @@ export class ArtistComponent {
       });
   }
 
+  getTopTracks(id: string) {
+    this.spotify.getTopTracks(id)
+      .subscribe(data => {
+        this.topTracks = data;
+        console.log(this.topTracks);
+      });
+  }
 }
